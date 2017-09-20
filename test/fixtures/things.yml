@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amazon_link: MyString
+  body: MyText
+  score: 1
+  name: MyString
+  author: MyString
+  downs: 1
+  ups: 1
+  created_utc: 2017-09-20 16:09:37
+  subreddit_id: MyString
+  controversiality: 1
+  subreddit: MyString
+
+two:
+  amazon_link: MyString
+  body: MyText
+  score: 1
+  name: MyString
+  author: MyString
+  downs: 1
+  ups: 1
+  created_utc: 2017-09-20 16:09:37
+  subreddit_id: MyString
+  controversiality: 1
+  subreddit: MyString
