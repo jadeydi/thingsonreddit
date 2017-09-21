@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import $ from 'jquery/dist/jquery'
 
 import { connect } from 'react-redux'
+import Showdown from 'showdown/dist/showdown'
 
 class Thing extends React.Component {
     getLink() {
@@ -10,7 +12,10 @@ class Thing extends React.Component {
     }
     getContext() {
         const thing = this.props.thing
-        return thing.body.slice(0, 100)
+        const converter = new Showdown.Converter()
+        const html = converter.makeHtml(thing.body)
+        const text = $(html).text()
+        return text.slice(0, 100)
     }
     render() {
         const thing = this.props.thing
