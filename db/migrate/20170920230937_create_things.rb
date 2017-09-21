@@ -1,6 +1,7 @@
 class CreateThings < ActiveRecord::Migration[5.1]
   def change
     create_table :things do |t|
+      t.string :original_link
       t.string :amazon_link
       t.string :amazon_image
       t.string :product_title
@@ -10,6 +11,8 @@ class CreateThings < ActiveRecord::Migration[5.1]
       t.string :author
       t.integer :downs
       t.integer :ups
+      t.integer :year
+      t.integer :month
       t.datetime :created_utc
       t.string :subreddit_id
       t.integer :controversiality

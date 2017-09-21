@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20170920230937) do
 
   create_table "things", force: :cascade do |t|
+    t.string "original_link"
     t.string "amazon_link"
     t.string "amazon_image"
     t.string "product_title"
@@ -22,6 +23,8 @@ ActiveRecord::Schema.define(version: 20170920230937) do
     t.string "author"
     t.integer "downs"
     t.integer "ups"
+    t.integer "year"
+    t.integer "month"
     t.datetime "created_utc"
     t.string "subreddit_id"
     t.integer "controversiality"
