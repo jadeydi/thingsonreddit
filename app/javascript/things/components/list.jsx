@@ -23,7 +23,7 @@ class Thing extends React.Component {
         const thing = this.props.thing
         return (
             <div className="row">
-                <div className="col d-flex mt-3 mb-3">
+                <div className="col d-flex mt-3 mb-3 flex-column flex-md-row">
                     <div className="thing-img mx-3" style={{backgroundImage: 'url(' + thing.amazon_image + ')'}}></div>
                     <div className="copy">
                         <h4 className="light">
@@ -41,6 +41,7 @@ class Thing extends React.Component {
                         </small>
                     </div>
                 </div>
+                <hr className="w-100"/>
             </div>
         )
     }
@@ -121,7 +122,6 @@ const mapStateToProps = (state) => {
         total_things: state.total_things,
         current_page: state.current_page,
         total_pages: state.total_pages,
-        favorites: state.favorites.slice(0, 10),
     }
 }
 

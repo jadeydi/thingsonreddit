@@ -9,7 +9,17 @@ class MainHeader extends React.Component {
 
     render() {
         const favorites = this.props.favorites.map((f, i) => {
-            return <a href={"/things/s/" + f } key={i}>{'/r/' + f}</a>
+            let klass = ''
+            if (i > 5) {
+                klass += 'd-none d-lg-block'
+            }
+            else if (i > 4) {
+                klass += 'd-none d-md-block'
+            }
+            else if (i > 2) {
+                klass += 'd-none d-sm-block'
+            }
+            return <a className={klass} href={"/things/s/" + f } key={i}>{'/r/' + f}</a>
         })
         return (
             <div>
@@ -20,7 +30,7 @@ class MainHeader extends React.Component {
                 </nav>
                 <div className="d-flex favorites align-items-stretch">
                     <span className="favorite-label">Favorites</span>
-                    <div className="d-flex justify-content-around light w-100">
+                    <div className="d-flex favorite-links justify-content-around light w-100">
                         {favorites}
                     </div>
                 </div>

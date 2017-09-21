@@ -20,9 +20,7 @@ const loggerMiddleware = createLogger()
 document.addEventListener('DOMContentLoaded', () => {
   const initialData = $('#initial-data').data().initialData
 
-  const state = {
-    comment: initialData.comment
-  }
+  const state = initialData
 
   store = createStore(
     (state) => { return state },

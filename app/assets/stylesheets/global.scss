@@ -23,3 +23,16 @@ body {
 .no-border-radius {
     border-radius: 0 !important;
 }
+
+@media (max-width: 767px) {
+    .content {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    h1.display-4 {
+        font-size: 2.2em
+    }
+
+}
+
