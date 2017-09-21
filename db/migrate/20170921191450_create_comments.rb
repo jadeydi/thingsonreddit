@@ -20,7 +20,6 @@ class CreateComments < ActiveRecord::Migration[5.1]
     add_column :things, :comment_id, :string, index:true
     remove_column :things, :body
     remove_column :things, :name
-    remove_column :things, :author
     remove_column :things, :downs
     remove_column :things, :ups
     remove_column :things, :created_at

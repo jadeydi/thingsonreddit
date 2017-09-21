@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170921195949) do
     t.string "amazon_image"
     t.string "product_title"
     t.integer "score"
+    t.string "author"
     t.integer "year"
     t.integer "month"
     t.datetime "created_utc"

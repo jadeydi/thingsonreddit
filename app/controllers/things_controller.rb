@@ -1,5 +1,30 @@
 class ThingsController < ApplicationController
 
+  def trends
+    params.permit(:subreddit)
+
+    subreddit = params[:subreddit] || SUBREDDITS.sample
+    @subreddit = subreddit
+
+    render 'trends'
+  end
+
+  def by_author
+    params.permit(:subreddit)
+    @subreddit = params[:subreddit]
+
+    @stats = Thing.where('subreddit = ?', @subreddit).group('author').count
+    render json: @stats.to_a
+  end
+
+  def by_day
+    params.permit(:subreddit)
+    @subreddit = params[:subreddit]
+
+    @stats = Thing.where('subreddit = ?', @subreddit).group_by_week('created_utc').count
+    render json: @stats
+  end
+
   def index
     params.permit(:order_by, :order_dir, :subreddit, :page)
 

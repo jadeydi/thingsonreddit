@@ -41,9 +41,11 @@ Upsert.batch(Thing.connection, :things) do |upsert|
       score: r['score'],
       month: r['month'],
       year: r['year'],
+      author: r['author'],
       subreddit_id: r['subreddit_id'],
       subreddit: r['subreddit'],
       comment_id: r['thread_id_hash'],
+      created_utc: r['created_utc'],
       updated_at: Time.now,
     })
   end
