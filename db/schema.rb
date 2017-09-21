@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(version: 20170920230937) do
 
   create_table "things", force: :cascade do |t|
     t.string "amazon_link"
+    t.string "amazon_image"
+    t.string "product_title"
     t.text "body"
     t.integer "score"
     t.string "name"

@@ -2,6 +2,8 @@ class CreateThings < ActiveRecord::Migration[5.1]
   def change
     create_table :things do |t|
       t.string :amazon_link
+      t.string :amazon_image
+      t.string :product_title
       t.text :body
       t.integer :score
       t.string :name

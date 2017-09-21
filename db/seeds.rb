@@ -10,7 +10,9 @@ require 'csv'
 rows = CSV.foreach('db/fixtures/things.csv', headers: true)
 Thing.create(rows.map { |r|
   {
-    amazon_link: r['link'],
+    amazon_link: r['amazon_link'],
+    amazon_image: r['amazon_image'],
+    product_title: r['product_title'],
     body: r['body'],
     score: r['score'],
     name: r['name'],
