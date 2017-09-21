@@ -41,7 +41,20 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # Default value for keep_releases is 5
 set :keep_releases, 3
+
+after 'bundler:install', 'rbenv:vars'
 after 'deploy', 'system:restart'
+
+namespace :rbenv do
+  task :vars do
+    on roles(:app) do
+      within release_path do
+        execute "echo 'RAILS_MASTER_KEY=#{File.read('config/secrets.yml.key')}' > #{release_path}/.rbenv-vars"
+        execute "echo 'RAILS_MASTER_KEY=#{File.read('config/secrets.yml.key')}' > #{release_path}/config/secrets.yml.key"
+      end
+    end
+  end
+end
 
 namespace :system do
   task :restart do
