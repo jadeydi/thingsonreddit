@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import $ from 'jquery/dist/jquery'
 import _ from 'underscore/underscore'
+import moment from 'moment/moment'
 
 import { connect } from 'react-redux'
 import Showdown from 'showdown/dist/showdown'
@@ -79,12 +80,17 @@ class ThingList extends React.Component {
         const nextKlass = this.props.current_page === this.props.total_pages ? 'page-item disabled' : 'page-item'
         const prevKlass = this.props.current_page === 1 ? 'page-item disabled' : 'page-item'
 
+        const date = moment(this.props.year + '-' + this.props.month, 'YYYY-MM')
+
         return (
             <div className="container">
                 <div className="content thing-list rounded">
                     <div className="row">
                         <div className="col">
-                            <h1 className="display-4 mt-3 mb-3 pt-3 pb-3">{'/r/' + this.props.subreddit}</h1>
+                            <div className="heading mt-3 mb-3 pt-3 pb-3">
+                                <h1 className="display-4">{'/r/' + this.props.subreddit}</h1>
+                                <h3><small className="text-muted light">{date.format('MMMM, YYYY')}</small></h3>
+                            </div>
                         </div>
                     </div>
                     {things}
@@ -113,9 +119,11 @@ const mapStateToProps = (state) => {
     return {
         subreddit: state.subreddit,
         things: state.things,
-        total_things: +state.total_things,
-        current_page: +state.current_page,
-        total_pages: +state.total_pages,
+        total_things: state.total_things,
+        current_page: state.current_page,
+        total_pages: state.total_pages,
+        year: state.year,
+        month: state.month,
     }
 }
 

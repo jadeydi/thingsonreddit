@@ -4,6 +4,8 @@
     total_things: @things.total_entries,
     current_page: @things.current_page,
     total_pages: @things.total_pages,
+    year: @year,
+    month: @month,
 }.to_json %>"></div>
 <div id="react-container"></div>
 <%= javascript_pack_tag 'things/index' %>

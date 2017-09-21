@@ -16,6 +16,8 @@ class ThingsController < ApplicationController
     order_by = params[:order_by] || 'score'
     order_dir = params[:order_dir] || 'desc'
     subreddit = params[:subreddit] || 'todayilearned'
+    @month = 1
+    @year = 2015
     @subreddit = subreddit
 
     @things = Thing.paginate(page: params[:page] || 1)
@@ -30,6 +32,8 @@ class ThingsController < ApplicationController
         subreddit: @subreddit.as_json,
         current_page: @things.current_page,
         total_pages: @things.total_pages,
+        year: @year,
+        month: @month,
       } }
     end
   end
