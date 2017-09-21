@@ -47,7 +47,9 @@ ActiveRecord::Schema.define(version: 20170921195949) do
     t.datetime "updated_at", null: false
     t.string "comment_id"
     t.index ["amazon_link", "comment_id"], name: "index_things_on_amazon_link_and_comment_id", unique: true
+    t.index ["created_utc"], name: "index_things_on_created_utc"
     t.index ["score"], name: "index_things_on_score"
+    t.index ["subreddit", "created_utc"], name: "index_things_on_subreddit_and_created_utc"
     t.index ["subreddit"], name: "index_things_on_subreddit"
   end
 
