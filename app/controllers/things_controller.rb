@@ -15,7 +15,7 @@ class ThingsController < ApplicationController
 
     order_by = params[:order_by] || 'score'
     order_dir = params[:order_dir] || 'desc'
-    subreddit = params[:subreddit] || 'DIY'
+    subreddit = params[:subreddit] || 'todayilearned'
 
     @things = Thing.limit(10)
       .where("subreddit = ? ", subreddit)

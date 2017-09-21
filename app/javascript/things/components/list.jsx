@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 class Thing extends React.Component {
+    getLink() {
+        return this.props.thing.amazon_link + '?tag=benrudolph-20'
+    }
     getContext() {
         const thing = this.props.thing
         return thing.body.slice(0, 100)
@@ -14,12 +17,11 @@ class Thing extends React.Component {
         return (
             <div className="row">
                 <div className="col d-flex mt-3 mb-3">
-                    <div className="thing-img-container mx-3">
-                        <img src={thing.amazon_image} width="100" height="100" />
-                    </div>
-                    <div className="content">
+                    <div className="thing-img mx-3" style={{backgroundImage: 'url(' + thing.amazon_image + ')'}}></div>
+                    <div className="copy">
                         <h4 className="light">
-                            <a href={thing.amazon_link} target="_blank">{thing.product_title}</a>
+                            <span className="badge badge-info">{thing.score}</span>&nbsp;&nbsp;
+                            <a href={this.getLink()} target="_blank">{thing.product_title}</a>
                         </h4>
                         <p className="text-muted light">
                             <i>
