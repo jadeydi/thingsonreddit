@@ -13,19 +13,20 @@ class Thing extends React.Component {
         const thing = this.props.thing
         return (
             <div className="row">
-                <div className="col d-flex">
+                <div className="col d-flex mt-3 mb-3">
                     <div className="thing-img-container mx-3">
-                        <img src="http://via.placeholder.com/100x100" width="100" height="100" />
+                        <img src={thing.amazon_image} width="100" height="100" />
                     </div>
                     <div className="content">
-                        <h3 className="light">
-                            <a href={'https://www.' + thing.amazon_link} target="_blank">Product Name</a>
-                        </h3>
+                        <h4 className="light">
+                            <a href={thing.amazon_link} target="_blank">{thing.product_title}</a>
+                        </h4>
                         <p className="text-muted light">
                             <i>
                             ...{this.getContext()}...
                             </i>
                         </p>
+                        <small>Suggested by: {thing.author}</small>
                     </div>
                 </div>
             </div>
@@ -42,7 +43,7 @@ class ThingList extends React.Component {
             )
         })
         return (
-            <div className="container">
+            <div className="container thing-list rounded">
             {things}
             </div>
         )
