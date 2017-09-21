@@ -49,7 +49,12 @@ class ThingList extends React.Component {
         })
         return (
             <div className="container content thing-list rounded">
-            {things}
+                <div className="row">
+                    <div className="col">
+                        <h1 className="display-4 m-3 pt-3 pb-3">{'/r/' + this.props.subreddit}</h1>
+                    </div>
+                </div>
+                {things}
             </div>
         )
     }
@@ -57,7 +62,8 @@ class ThingList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        things: state.things
+        subreddit: state.subreddit,
+        things: state.things,
     }
 }
 

@@ -16,6 +16,7 @@ class ThingsController < ApplicationController
     order_by = params[:order_by] || 'score'
     order_dir = params[:order_dir] || 'desc'
     subreddit = params[:subreddit] || 'todayilearned'
+    @subreddit = subreddit
 
     @things = Thing.limit(10)
       .where("subreddit = ? ", subreddit)
@@ -23,7 +24,7 @@ class ThingsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render :json => { things: @things.as_json } }
+      format.json { render :json => { things: @things.as_json, subreddit: @subreddit.as_json } }
     end
   end
 end
