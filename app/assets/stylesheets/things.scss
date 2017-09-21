@@ -6,9 +6,21 @@
     padding: 60px 60px;
 }
 
-.thing-img {
+.thing-img, .thing-img-thumb {
     min-width: 100px;
     min-height: 100px;
+    max-width: 100px;
+    max-height: 100px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.thing-img-thumb {
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 50px;
+    max-height: 50px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;

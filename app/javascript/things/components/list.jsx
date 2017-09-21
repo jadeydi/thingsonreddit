@@ -30,7 +30,7 @@ class Thing extends React.Component {
                         </h4>
                         <p className="text-muted light">
                             <i>
-                            ...{this.getContext()}...
+                                {this.getContext()}...
                             </i>
                         </p>
                         <small>

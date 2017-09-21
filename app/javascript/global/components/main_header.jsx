@@ -9,7 +9,7 @@ class MainHeader extends React.Component {
     render() {
         return (
             <nav className="navbar navbar-light bg-faded">
-                <a className="navbar-brand" href="/">Things on Reddit</a>
+                <a className="navbar-brand" href="/">ThingsOnReddit</a>
                 <ThingFilters />
             </nav>
         )
