@@ -3,7 +3,7 @@ body {
     background-color: $li-blue;
 }
 
-nav {
+.navbar {
     background-color: white;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
 }
@@ -16,6 +16,8 @@ nav {
     margin-top: 30px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
     background-color: white;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 .no-border-radius {

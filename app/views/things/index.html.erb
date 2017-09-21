@@ -1,3 +1,9 @@
-<div id="initial-data" data-initial-data="<%= { subreddit: @subreddit.as_json, things: @things.as_json }.to_json %>"></div>
+<div id="initial-data" data-initial-data="<%= {
+    subreddit: @subreddit.as_json,
+    things: @things.as_json,
+    total_things: @things.total_entries,
+    current_page: @things.current_page,
+    total_pages: @things.total_pages,
+}.to_json %>"></div>
 <div id="react-container"></div>
 <%= javascript_pack_tag 'things/index' %>

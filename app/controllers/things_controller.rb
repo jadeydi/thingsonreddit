@@ -18,13 +18,19 @@ class ThingsController < ApplicationController
     subreddit = params[:subreddit] || 'todayilearned'
     @subreddit = subreddit
 
-    @things = Thing.limit(10)
+    @things = Thing.paginate(page: params[:page] || 1)
       .where("subreddit = ? ", subreddit)
       .order("#{order_by} #{order_dir}")
 
     respond_to do |format|
       format.html
-      format.json { render :json => { things: @things.as_json, subreddit: @subreddit.as_json } }
+      format.json { render :json => {
+        total_things: @things.total_entries,
+        things: @things.as_json,
+        subreddit: @subreddit.as_json,
+        current_page: @things.current_page,
+        total_pages: @things.total_pages,
+      } }
     end
   end
 end
