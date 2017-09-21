@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import $ from 'jquery/dist/jquery'
 
 import AutoComplete from 'global/auto_complete.js'
 import Subreddits from 'global/subreddits'
@@ -21,6 +22,7 @@ class ThingFilters extends React.Component {
             },
             onSelect: (event, term, item) => {
                 this.setState({ subreddit: term })
+                $('#subreddit-form').submit()
             },
         })
     }
@@ -31,7 +33,7 @@ class ThingFilters extends React.Component {
 
     render() {
         return (
-            <form className="form-inline" method="GET" action={'/things/s/' + this.state.subreddit + '/'}>
+            <form id="subreddit-form" className="form-inline" method="GET" action={'/things/s/' + this.state.subreddit + '/'}>
                 <div className="input-group">
                   <input onChange={this.onChange.bind(this)} id="subreddit-filter" placeholder="Choose a subreddit" className="form-control no-border-radius" type="text" />
                   <span className="input-group-btn">
