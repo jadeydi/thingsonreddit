@@ -4,5 +4,7 @@ Rails.application.routes.draw do
     get '/s/:subreddit', on: :collection, action: 'index'
   end
 
+  resources :comments
+
   root 'things#index'
 end

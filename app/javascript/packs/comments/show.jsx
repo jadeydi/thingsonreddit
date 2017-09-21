@@ -12,7 +12,7 @@ import { createLogger } from 'redux-logger'
 import { Provider } from 'react-redux'
 
 import MainHeader from 'global/components/main_header'
-import ThingShow from 'things/components/show'
+import CommentShow from 'comments/components/show'
 
 let store;
 const loggerMiddleware = createLogger()
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const initialData = $('#initial-data').data().initialData
 
   const state = {
-    thing: initialData.thing
+    comment: initialData.comment
   }
 
   store = createStore(
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Provider store={store}>
       <div>
         <MainHeader />
-        <ThingShow />
+        <CommentShow />
       </div>
     </Provider>,
     document.getElementById('react-container'),

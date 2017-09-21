@@ -15,7 +15,7 @@ class Thing extends React.Component {
     getContext() {
         const thing = this.props.thing
         const converter = new Showdown.Converter()
-        const html = converter.makeHtml(thing.body)
+        const html = converter.makeHtml(thing.comment.body)
         const text = $(html).text()
         return text.slice(0, 100)
     }
@@ -36,8 +36,8 @@ class Thing extends React.Component {
                             </i>
                         </p>
                         <small>
-                            By: {thing.author}&nbsp;|&nbsp;
-                            <a href={'/things/' + thing.id}>View comment</a>
+                            By: {thing.comment.author}&nbsp;|&nbsp;
+                            <a href={'/comments/' + thing.comment_id}>View comment</a>
                         </small>
                     </div>
                 </div>

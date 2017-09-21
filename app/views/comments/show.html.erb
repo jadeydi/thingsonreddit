@@ -1,0 +1,3 @@
+<div id="initial-data" data-initial-data="<%= { comment: @comment.as_json(include: :things) }.to_json %>"></div>
+<div id="react-container"></div>
+<%= javascript_pack_tag 'comments/show' %>

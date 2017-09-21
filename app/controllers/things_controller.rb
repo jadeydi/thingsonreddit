@@ -1,15 +1,5 @@
 class ThingsController < ApplicationController
 
-  def show
-    params.permit(:id)
-
-    @thing = Thing.find(params[:id])
-    respond_to do |format|
-      format.html
-      format.json { render :json => { thing: @thing.as_json } }
-    end
-  end
-
   def index
     params.permit(:order_by, :order_dir, :subreddit, :page)
 
@@ -28,7 +18,7 @@ class ThingsController < ApplicationController
       format.html
       format.json { render :json => {
         total_things: @things.total_entries,
-        things: @things.as_json,
+        things: @things.as_json(include: [:comment]),
         subreddit: @subreddit.as_json,
         current_page: @things.current_page,
         total_pages: @things.total_pages,
