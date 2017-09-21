@@ -31,9 +31,13 @@ class CommentShow extends React.Component {
             <div className="container content comment-show rounded">
                 <div className="comment-body">
                     <h2 className="mb-3">{'/r/' + comment.subreddit}</h2>
-                    <p className="comment-text light" dangerouslySetInnerHTML={{ __html: converter.makeHtml(comment.body) }} >
-                    </p>
-                    <small className="text-muted">~&nbsp;{comment.author}</small>
+                    <blockquote className="blockquote">
+                        <p className="comment-text light" dangerouslySetInnerHTML={{ __html: converter.makeHtml(comment.body) }} >
+                        </p>
+                        <footer className="blockquote-footer"><small className="text-muted">{comment.author}</small></footer>
+                    </blockquote>
+                    <br />
+                    <small><a target="_blank" href={comment.thread_id}>View on Reddit</a></small>
                     <hr />
                     <h4 className="lead mb-3">Recommended Things</h4>
                     {thingSnippets}
