@@ -26,7 +26,10 @@ class Thing extends React.Component {
                             ...{this.getContext()}...
                             </i>
                         </p>
-                        <small>Suggested by: {thing.author}</small>
+                        <small>
+                            By: {thing.author}&nbsp;|&nbsp;
+                            <a href={'/things/' + thing.id}>View comment</a>
+                        </small>
                     </div>
                 </div>
             </div>
@@ -43,7 +46,7 @@ class ThingList extends React.Component {
             )
         })
         return (
-            <div className="container thing-list rounded">
+            <div className="container content thing-list rounded">
             {things}
             </div>
         )
