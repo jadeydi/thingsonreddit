@@ -89,7 +89,6 @@ class ThingList extends React.Component {
                         <div className="col">
                             <div className="heading mt-3 mb-3 pt-3 pb-3">
                                 <h1 className="display-4">{'/r/' + this.props.subreddit}</h1>
-                                <h3><small className="text-muted light">{date.format('MMMM, YYYY')}</small></h3>
                             </div>
                         </div>
                     </div>
@@ -122,8 +121,7 @@ const mapStateToProps = (state) => {
         total_things: state.total_things,
         current_page: state.current_page,
         total_pages: state.total_pages,
-        year: state.year,
-        month: state.month,
+        favorites: state.favorites.slice(0, 10),
     }
 }
 

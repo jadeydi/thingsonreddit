@@ -21,7 +21,7 @@ class ThingsController < ApplicationController
     params.permit(:subreddit)
     @subreddit = params[:subreddit]
 
-    @stats = Thing.where('subreddit = ?', @subreddit).group_by_week('created_utc').count
+    @stats = Thing.where('subreddit = ?', @subreddit).group_by_day('created_utc').count
     render json: @stats
   end
 
@@ -31,10 +31,9 @@ class ThingsController < ApplicationController
     order_by = params[:order_by] || 'score'
     order_dir = params[:order_dir] || 'desc'
     subreddit = params[:subreddit] || SUBREDDITS.sample
-    @month = 1
-    @year = 2015
     @subreddit = subreddit
 
+    @favorites = FAVORITES.sample 10
     @things = Thing.paginate(page: params[:page] || 1)
       .where("subreddit = ? ", subreddit)
       .order("#{order_by} #{order_dir}")
@@ -47,11 +46,12 @@ class ThingsController < ApplicationController
         subreddit: @subreddit.as_json,
         current_page: @things.current_page,
         total_pages: @things.total_pages,
-        year: @year,
-        month: @month,
+        favorites: @favorites
       } }
     end
   end
+
+  FAVORITES = ["FrugalFemaleFashion", "buildapc", "technology", "PS3", "Buddhism", "Games", "Wishlist", "MakeupAddiction", "buildapcsales", "The_Donald", "GameDeals", "vegan", "pcmasterrace", "mechanicalpencils", "weddingplanning", "JUSTNOMIL", "CredibleDefense", "whatisthisthing", "funny", "femalefashionadvice"]
 
   SUBREDDITS = [
     '3DS',
