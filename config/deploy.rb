@@ -41,6 +41,3 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # Default value for keep_releases is 5
 set :keep_releases, 3
-
-after 'bundler:install', 'rbenv:vars'
-after 'deploy', 'system:restart'
