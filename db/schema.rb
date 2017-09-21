@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20170921195949) do
     t.datetime "updated_at", null: false
     t.string "thread_id_hash"
     t.string "thread_id"
+    t.index ["thread_id_hash"], name: "index_comments_on_thread_id_hash", unique: true
   end
 
   create_table "things", force: :cascade do |t|

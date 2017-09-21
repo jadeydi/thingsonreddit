@@ -9,36 +9,45 @@ require 'digest'
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 rows = CSV.foreach('db/fixtures/things.csv', headers: true)
-rows.each do |r|
-  md5 = Digest::MD5.new
-  md5 << r['thread_id']
-  thread_hash = md5.hexdigest
-  comment = Comment.find_or_create_by(thread_id_hash: thread_hash) do |comment|
-    comment.body = r['body']
-    comment.score = r['score']
-    comment.name = r['name']
-    comment.author = r['author']
-    comment.downs = r['downs']
-    comment.ups = r['ups']
-    comment.month = r['month']
-    comment.year = r['year']
-    comment.created_utc = r['created_utc']
-    comment.subreddit_id = r['subreddit_id']
-    comment.controversiality = r['controversiality']
-    comment.subreddit = r['subreddit']
-    comment.thread_id = r['thread_id']
+result = Upsert.batch(Comment.connection, :comments) do |upsert|
+  rows.each do |r|
+    upsert.row({ thread_id_hash: r['thread_id_hash'] }, {
+      body: r['body'],
+      score: r['score'],
+      name: r['name'],
+      author: r['author'],
+      downs: r['downs'],
+      ups: r['ups'],
+      month: r['month'],
+      year: r['year'],
+      created_utc: r['created_utc'],
+      subreddit_id: r['subreddit_id'],
+      controversiality: r['controversiality'],
+      subreddit: r['subreddit'],
+      thread_id: r['thread_id'],
+      thread_id_hash: r['thread_id_hash'],
+      created_at: Time.now,
+      updated_at: Time.now,
+    })
   end
-  thing = Thing.create!(
-    original_link: r['original_link'],
-    amazon_link: r['amazon_link'],
-    amazon_image: r['amazon_image'],
-    product_title: r['product_title'],
-    score: r['score'],
-    month: r['month'],
-    year: r['year'],
-    subreddit_id: r['subreddit_id'],
-    subreddit: r['subreddit'],
-    comment_id: thread_hash,
-  )
-
 end
+
+Upsert.batch(Thing.connection, :things) do |upsert|
+  rows.each do |r|
+    upsert.row({ amazon_link: r['amazon_link'], comment_id: r['thread_id_hash'] }, {
+      original_link: r['original_link'],
+      amazon_image: r['amazon_image'],
+      product_title: r['product_title'],
+      score: r['score'],
+      month: r['month'],
+      year: r['year'],
+      subreddit_id: r['subreddit_id'],
+      subreddit: r['subreddit'],
+      comment_id: r['thread_id_hash'],
+      updated_at: Time.now,
+    })
+  end
+end
+
+puts "Comments: #{Comment.count}"
+puts "Things: #{Thing.count}"
