@@ -41,3 +41,15 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 
 # Default value for keep_releases is 5
 set :keep_releases, 3
+after 'deploy', 'system:restart'
+
+namespace :system do
+  task :restart do
+    on roles(:app) do
+      execute :sudo, "service unicorn_thingsonreddit stop"
+      # Allow process to stop
+      execute "sleep 1"
+      execute :sudo, "service unicorn_thingsonreddit start"
+    end
+  end
+end
