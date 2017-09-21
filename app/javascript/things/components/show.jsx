@@ -13,6 +13,7 @@ class ThingShow extends React.Component {
         return (
             <div className="container content thing-show rounded">
                 <div className="comment-body">
+                    <h2 className="mb-3">{'/r/' + thing.subreddit}</h2>
                     <p className="comment-text light" dangerouslySetInnerHTML={{ __html: converter.makeHtml(thing.body) }} >
                     </p>
                     <small className="text-muted">~&nbsp;{thing.author}</small>
