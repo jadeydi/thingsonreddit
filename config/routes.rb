@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   resources :comments
 
+  get '/about', to: 'application#about'
+
   root 'things#index'
 end

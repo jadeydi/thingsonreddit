@@ -1,0 +1,34 @@
+<div id="initial-data" data-initial-data="<%= {
+    favorites: @favorites,
+}.to_json %>"></div>
+<div id="react-container"></div>
+<div class="container">
+  <div class="content about rounded">
+    <div class="row">
+      <div class="col">
+        <div class="heading mt-3 mb-3 pt-3 pb-3">
+          <h1 class="display4">About</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="copy pb-3 mb-3">
+          <p class="light">
+            ThingsOnReddit started as a fun side project to see what kind of items people were recommending on Reddit. There are further efforts to discover trends and patterns of things recommended on Reddit in hopes of giving the best recommendations.
+          </p>
+          <h4>Methodology</h4>
+          <p class="light">
+          ThingsOnReddit uses the comment database on Google BigQuery and mines the comments for links to Amazon. It certainly isn't a perfect proxy for all the items recommended. Once the links are parsed, data is scraped from Amazon to try and determine if the link is a product, as well as to get other meta data about the product.
+          </p>
+          <h4>Affiliate Links</h4>
+          <p class="light">
+            Yes, most of the links on this site are affiliate links to Amazon. In order to continue this project, we need revenue to keep the site up. I appreciate you using them.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_pack_tag 'about' %>

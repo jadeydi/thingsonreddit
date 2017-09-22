@@ -25,7 +25,11 @@ class MainHeader extends React.Component {
             <div>
                 <nav className="navbar navbar-light bg-faded">
                     <a className="navbar-brand" href="/">ThingsOnReddit</a>
-                    <ul className="navbar-nav mr-auto"></ul>
+                    <ul className="navbar-nav mr-auto">
+                        <li className="nav-item active">
+                          <a className="nav-link" href="/about">About</a>
+                        </li>
+                    </ul>
                     <ThingFilters />
                 </nav>
                 <div className="d-flex favorites align-items-stretch">
