@@ -29,7 +29,7 @@ class MainHeader extends React.Component {
                     <ThingFilters />
                 </nav>
                 <div className="d-flex favorites align-items-stretch">
-                    <span className="favorite-label">Favorites</span>
+                    <span className="favorite-label">Popular</span>
                     <div className="d-flex favorite-links justify-content-around light w-100">
                         {favorites}
                     </div>
