@@ -35,7 +35,8 @@ class ThingsController < ApplicationController
 
     @favorites = FAVORITES.sample 10
     @things = Thing.paginate(page: params[:page] || 1)
-      .where("subreddit = ? ", subreddit)
+      .includes(:comment)
+      .where("things.subreddit = ? ", subreddit)
       .order("#{order_by} #{order_dir}")
 
     respond_to do |format|
