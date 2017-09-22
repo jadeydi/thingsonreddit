@@ -17,7 +17,7 @@ class Thing extends React.Component {
         const converter = new Showdown.Converter()
         const html = converter.makeHtml(thing.comment.body)
         const text = $(html).text()
-        return text.slice(0, 100)
+        return text.slice(0, 300)
     }
 
     render() {
@@ -41,7 +41,8 @@ class Thing extends React.Component {
                         </p>
                         <small>
                             By: {thing.comment.author}&nbsp;|&nbsp;
-                            <a href={'/comments/' + thing.comment_id}>View comment</a>
+                            <a href={'/comments/' + thing.comment_id}>View comment</a>&nbsp;|&nbsp;
+                            <a href={thing.comment.thread_id} target="_blank">View on Reddit</a>
                         </small>
                     </div>
                 </div>
@@ -89,7 +90,7 @@ class ThingList extends React.Component {
 
         return (
             <div className="container">
-                <div className="content thing-list rounded">
+                <div className="content thing-list">
                     <div className="row">
                         <div className="col">
                             <div className="heading mt-3 mb-3 pt-3 pb-3">

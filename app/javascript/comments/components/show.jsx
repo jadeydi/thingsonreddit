@@ -63,7 +63,7 @@ class CommentShow extends React.Component {
             return <ThingSnippet key={i} thing={thing} />
         })
         return (
-            <div className="container content comment-show rounded">
+            <div className="container content comment-show">
                 <div className="comment-body">
                     <h2 className="mb-3">{'/r/' + comment.subreddit}</h2>
                     <blockquote className="blockquote">
