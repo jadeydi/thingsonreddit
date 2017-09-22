@@ -6,6 +6,12 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import $ from 'jquery/dist/jquery'
+import Tether from 'tether/dist/js/tether'
+
+window.Tether = Tether
+window.jQuery = window.$ = $
+
+import 'bootstrap/dist/js/bootstrap'
 
 import { createStore, applyMiddleware } from 'redux'
 import { createLogger } from 'redux-logger'

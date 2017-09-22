@@ -19,6 +19,7 @@ class Thing extends React.Component {
         const text = $(html).text()
         return text.slice(0, 100)
     }
+
     render() {
         const thing = this.props.thing
         return (
@@ -27,7 +28,10 @@ class Thing extends React.Component {
                     <div className="thing-img mx-3" style={{backgroundImage: 'url(' + thing.amazon_image + ')'}}></div>
                     <div className="copy">
                         <h4 className="light">
-                            <span className="badge badge-info">{thing.score}</span>&nbsp;&nbsp;
+                            <small>
+                                <span className="badge badge-info light">{thing.score} karma</span>
+                            </small>
+                            &nbsp;&nbsp;
                             <a href={this.getLink()} target="_blank">{thing.product_title}</a>
                         </h4>
                         <p className="text-muted light">
