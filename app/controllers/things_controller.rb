@@ -28,7 +28,7 @@ class ThingsController < ApplicationController
   def index
     params.permit(:order_by, :order_dir, :subreddit, :page)
 
-    @order_by = params[:order_by] || 'score'
+    @order_by = if params[:order_by].nil? || params[:order_by].empty? then 'score' else params[:order_by] end
     order_dir = params[:order_dir] || 'desc'
     subreddit = params[:subreddit] || SUBREDDITS.sample
     @subreddit = subreddit
