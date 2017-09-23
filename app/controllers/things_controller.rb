@@ -28,7 +28,7 @@ class ThingsController < ApplicationController
   def index
     params.permit(:order_by, :order_dir, :subreddit, :page)
 
-    order_by = params[:order_by] || 'score'
+    @order_by = params[:order_by] || 'score'
     order_dir = params[:order_dir] || 'desc'
     subreddit = params[:subreddit] || SUBREDDITS.sample
     @subreddit = subreddit
@@ -37,7 +37,7 @@ class ThingsController < ApplicationController
     @things = Thing.paginate(page: params[:page] || 1)
       .includes(:comment)
       .where("things.subreddit = ? ", subreddit)
-      .order("#{order_by} #{order_dir}")
+      .order("#{@order_by} #{order_dir}")
 
     respond_to do |format|
       format.html
@@ -47,7 +47,8 @@ class ThingsController < ApplicationController
         subreddit: @subreddit.as_json,
         current_page: @things.current_page,
         total_pages: @things.total_pages,
-        favorites: @favorites
+        favorites: @favorites,
+        order_by: @order_by,
       } }
     end
   end

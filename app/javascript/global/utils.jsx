@@ -26,6 +26,10 @@ const Utils = {
             start: selectedPage - limitHalf,
             end: selectedPage + limitHalf,
         };
+    },
+
+    subredditLink: function(subreddit, orderBy = 'score', page = 1) {
+        return '/things/r/' + subreddit + '?page=' + page + '&order_by=' + orderBy
     }
 }
 

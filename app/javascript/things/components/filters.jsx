@@ -2,9 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import $ from 'jquery/dist/jquery'
+import { connect } from 'react-redux'
 
 import AutoComplete from 'global/auto_complete.js'
 import Subreddits from 'global/subreddits'
+import Utils from 'global/utils'
 
 class ThingFilters extends React.Component {
     constructor() {
@@ -39,9 +41,10 @@ class ThingFilters extends React.Component {
     }
 
     render() {
+        const link = Utils.subredditLink(this.state.subreddit, this.props.order_by)
         return (
             <div className="d-flex">
-                <form id="subreddit-form" className="form-inline" method="GET" action={'/things/r/' + this.state.subreddit + '/'}>
+                <form id="subreddit-form" className="form-inline" method="GET" action={link}>
                     <div className="input-group">
                       <input
                             onChange={this.onChange.bind(this)}
@@ -59,5 +62,13 @@ class ThingFilters extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        order_by: state.order_by,
+    }
+}
+
+ThingFilters = connect(mapStateToProps)(ThingFilters)
 
 export default ThingFilters

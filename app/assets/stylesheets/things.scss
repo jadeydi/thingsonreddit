@@ -53,6 +53,19 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.46);
 }
 
+.order-by {
+    .btn {
+        transition: all 0.5s;
+        color: $orange;
+        background-color: white;
+    }
+
+    .btn:hover, .active {
+        background-color: $orange;
+        color: white;
+    }
+}
+
 @media (min-width: 768px) {
     .thing-img, .thing-img-thumb {
         max-width: 100px;

@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import Logo from '../../../assets/images/logo_small.png'
 
 import ThingFilters from 'things/components/filters'
+import Utils from 'global/utils'
 
 class MainHeader extends React.Component {
 
@@ -20,7 +21,8 @@ class MainHeader extends React.Component {
             else if (i > 2) {
                 klass += 'd-none d-sm-block'
             }
-            return <a className={klass} href={"/things/r/" + f } key={i}>{'/r/' + f}</a>
+            const link = Utils.subredditLink(f, this.props.order_by)
+            return <a className={klass} href={link} key={i}>{'/r/' + f}</a>
         })
         return (
             <div>
@@ -49,6 +51,7 @@ class MainHeader extends React.Component {
 const mapStateToProps = (state) => {
     return {
         favorites: state.favorites,
+        order_by: state.order_by,
     }
 }
 

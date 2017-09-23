@@ -5,6 +5,7 @@
     current_page: @things.current_page,
     total_pages: @things.total_pages,
     favorites: @favorites,
+    order_by: @order_by,
 }.to_json %>"></div>
 <div id="react-container"></div>
 <%= javascript_pack_tag 'things/index' %>

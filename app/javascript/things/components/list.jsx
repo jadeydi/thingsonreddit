@@ -66,13 +66,34 @@ class BootstrapPageLink extends React.Component {
         if (this.props.currentPage === this.props.page) {
             klass += ' active'
         }
-        const link = '/things/r/' + this.props.subreddit + '?page=' + this.props.page
+        const link = Utils.subredditLink(this.props.subreddit, this.props.orderBy, this.props.page)
         return (
             <li className={klass}>
                 <a className="page-link" href={link}>
                     {this.props.page}
                 </a>
             </li>
+        )
+    }
+}
+
+class ThingOrderBy extends React.Component {
+
+    render() {
+        const orderBy = this.props.orderBy
+        const subreddit = this.props.subreddit
+        const commonKlass = 'btn btn-default rounded-0 btn-sm'
+        return (
+            <div>
+                <div className="btn-group order-by">
+                    <a href={Utils.subredditLink(subreddit, 'score')} className={commonKlass + (orderBy === 'score' || !orderBy ? ' active' : '')} >
+                        <i className="fa fa-sort-amount-desc"></i>&nbsp;Karma
+                    </a>
+                    <a href={Utils.subredditLink(subreddit, 'created_utc')} className={commonKlass + (orderBy === 'created_utc' ? ' active' : '')} >
+                        <i className="fa fa-sort-amount-desc"></i>&nbsp;Date
+                    </a>
+                </div>
+            </div>
         )
     }
 }
@@ -86,16 +107,19 @@ class ThingList extends React.Component {
         })
 
         let pagesToShowLimit = 10
-        if (window.width() < 768) {
+        if ($(window).width() < 768) {
             pagesToShowLimit = 5
         }
         const pagesToShow = Utils.pagesToShow(this.props.current_page, this.props.total_pages, pagesToShowLimit)
         const pageLinks = _.range(pagesToShow.start + 1, pagesToShow.end + 1).map((page) => {
-            return <BootstrapPageLink subreddit={this.props.subreddit} currentPage={this.props.current_page} key={page} page={page} />
+            return <BootstrapPageLink
+                subreddit={this.props.subreddit}
+                orderBy={this.props.order_by}
+                currentPage={this.props.current_page} key={page} page={page} />
         })
 
-        const nextUrl = '/things/r/' + this.props.subreddit + '?page=' + (this.props.current_page + 1)
-        const prevUrl = '/things/r/' + this.props.subreddit + '?page=' + (this.props.current_page - 1)
+        const nextUrl = Utils.subredditLink(this.props.subreddit, this.props.order_by, this.props.current_page + 1)
+        const prevUrl = Utils.subredditLink(this.props.subreddit, this.props.order_by, this.props.current_page - 1)
         const nextKlass = this.props.current_page === this.props.total_pages ? 'page-item disabled' : 'page-item'
         const prevKlass = this.props.current_page === 1 ? 'page-item disabled' : 'page-item'
 
@@ -112,6 +136,9 @@ class ThingList extends React.Component {
                             </div>
                         </div>
                     </div>
+
+                    <ThingOrderBy orderBy={this.props.order_by} subreddit={this.props.subreddit} />
+
                     {things}
                     <div className="row mt-3 mb-3">
                         <div className="col">
@@ -141,6 +168,7 @@ const mapStateToProps = (state) => {
         total_things: state.total_things,
         current_page: state.current_page,
         total_pages: state.total_pages,
+        order_by: state.order_by,
     }
 }
 
