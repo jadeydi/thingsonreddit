@@ -59,10 +59,10 @@ end
 namespace :system do
   task :restart do
     on roles(:app) do
-      execute :sudo, "service unicorn_thingsonreddit stop"
+      execute :sudo, "service thingsonreddit stop"
       # Allow process to stop
       execute "sleep 1"
-      execute :sudo, "service unicorn_thingsonreddit start"
+      execute :sudo, "service thingsonreddit start"
     end
   end
 end
