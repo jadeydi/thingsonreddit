@@ -7,6 +7,7 @@ require "capistrano/deploy"
 require 'capistrano/rbenv'
 require 'capistrano/rails'
 require 'capistrano/puma'
+install_plugin Capistrano::Puma
 
 # Load the SCM plugin appropriate to your project:
 #
