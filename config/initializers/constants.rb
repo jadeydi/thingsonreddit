@@ -1,4 +1,4 @@
-FAVORITES = ["FrugalFemaleFashion", "buildapc", "technology", "PS3", "Buddhism", "Games", "Wishlist", "MakeupAddiction", "buildapcsales", "The_Donald", "GameDeals", "vegan", "pcmasterrace", "mechanicalpencils", "weddingplanning", "JUSTNOMIL", "CredibleDefense", "whatisthisthing", "funny", "femalefashionadvice"].freeze
+FAVORITES = ["aww", "HomeImprovement", "guns", "news", "Fitness", "Android", "NintendoSwitch", "Christianity", "AskWomen", "gifs", "mildlyinteresting", "worldnews", "boardgames", "gaming", "The_Donald", "TrollXChromosomes", "weddingplanning", "buildapc", "GameDeals", "politics", "Cooking", "SkincareAddiction", "Watches", "comicbooks", "malefashionadvice", "MakeupAddiction", "Parenting", "videos", "DIY", "AsianBeauty", "BuyItForLife", "buildapcsales", "AskHistorians", "EDC", "pics", "pcmasterrace", "todayilearned", "whatisthisthing", "funny", "femalefashionadvice"].freeze
 
 SUBREDDITS = [
   '3DS',
