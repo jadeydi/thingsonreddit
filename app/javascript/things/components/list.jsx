@@ -59,7 +59,7 @@ class BootstrapPageLink extends React.Component {
         if (this.props.currentPage === this.props.page) {
             klass += ' active'
         }
-        const link = '/things/s/' + this.props.subreddit + '?page=' + this.props.page
+        const link = '/things/r/' + this.props.subreddit + '?page=' + this.props.page
         return (
             <li className={klass}>
                 <a className="page-link" href={link}>
@@ -81,8 +81,8 @@ class ThingList extends React.Component {
             return <BootstrapPageLink subreddit={this.props.subreddit} currentPage={this.props.current_page} key={page} page={page} />
         })
 
-        const nextUrl = '/things/s/' + this.props.subreddit + '?page=' + (this.props.current_page + 1)
-        const prevUrl = '/things/s/' + this.props.subreddit + '?page=' + (this.props.current_page - 1)
+        const nextUrl = '/things/r/' + this.props.subreddit + '?page=' + (this.props.current_page + 1)
+        const prevUrl = '/things/r/' + this.props.subreddit + '?page=' + (this.props.current_page - 1)
         const nextKlass = this.props.current_page === this.props.total_pages ? 'page-item disabled' : 'page-item'
         const prevKlass = this.props.current_page === 1 ? 'page-item disabled' : 'page-item'
 

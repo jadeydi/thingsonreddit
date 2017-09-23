@@ -25,12 +25,12 @@ class ThingTrends extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col">
-                            <LineChart  ytitle="Count of things" data={"/things/s/" + subreddit + "/by_day"} />
+                            <LineChart  ytitle="Count of things" data={"/things/r/" + subreddit + "/by_day"} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <ColumnChart xtitle="Authors" ytitle="Count of things" data={"/things/s/" + subreddit + "/by_author"} />
+                            <ColumnChart xtitle="Authors" ytitle="Count of things" data={"/things/r/" + subreddit + "/by_author"} />
                         </div>
                     </div>
                 </div>

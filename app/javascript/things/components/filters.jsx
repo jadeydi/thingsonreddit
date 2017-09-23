@@ -33,7 +33,7 @@ class ThingFilters extends React.Component {
 
     render() {
         return (
-            <form id="subreddit-form" className="form-inline" method="GET" action={'/things/s/' + this.state.subreddit + '/'}>
+            <form id="subreddit-form" className="form-inline" method="GET" action={'/things/r/' + this.state.subreddit + '/'}>
                 <div className="input-group">
                   <input onChange={this.onChange.bind(this)} id="subreddit-filter" placeholder="Choose a subreddit" className="form-control no-border-radius" type="text" />
                   <span className="input-group-btn">

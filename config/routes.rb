@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :things do
-    get '/s/:subreddit', on: :collection, action: 'index'
-    get '/s/:subreddit/trends', on: :collection, action: 'trends'
-    get '/s/:subreddit/by_author', on: :collection, action: 'by_author'
-    get '/s/:subreddit/by_day', on: :collection, action: 'by_day'
+    get '/r/:subreddit', on: :collection, action: 'index'
+    get '/r/:subreddit/trends', on: :collection, action: 'trends'
+    get '/r/:subreddit/by_author', on: :collection, action: 'by_author'
+    get '/r/:subreddit/by_day', on: :collection, action: 'by_day'
   end
 
   resources :comments

@@ -19,7 +19,7 @@ class MainHeader extends React.Component {
             else if (i > 2) {
                 klass += 'd-none d-sm-block'
             }
-            return <a className={klass} href={"/things/s/" + f } key={i}>{'/r/' + f}</a>
+            return <a className={klass} href={"/things/r/" + f } key={i}>{'/r/' + f}</a>
         })
         return (
             <div>
