@@ -84,7 +84,12 @@ class ThingList extends React.Component {
                 <Thing thing={thing} key={i} />
             )
         })
-        const pagesToShow = Utils.pagesToShow(this.props.current_page, this.props.total_pages, 10)
+
+        let pagesToShowLimit = 10
+        if (window.width() < 768) {
+            pagesToShowLimit = 5
+        }
+        const pagesToShow = Utils.pagesToShow(this.props.current_page, this.props.total_pages, pagesToShowLimit)
         const pageLinks = _.range(pagesToShow.start + 1, pagesToShow.end + 1).map((page) => {
             return <BootstrapPageLink subreddit={this.props.subreddit} currentPage={this.props.current_page} key={page} page={page} />
         })
