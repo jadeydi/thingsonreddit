@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
+import Logo from '../../../assets/images/logo_small.png'
 
 import ThingFilters from 'things/components/filters'
 
@@ -23,8 +24,10 @@ class MainHeader extends React.Component {
         })
         return (
             <div>
-                <nav className="navbar navbar-light bg-faded">
-                    <a className="navbar-brand" href="/">ThingsOnReddit</a>
+                <nav className="navbar navbar-light pb-1 pt-1 bg-faded">
+                    <a className="navbar-brand logo mr-3" href="/">
+                        <img src={Logo} height="40" alt="ThingsOnReddit" />
+                    </a>
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
                           <a className="nav-link" href="/about">About</a>

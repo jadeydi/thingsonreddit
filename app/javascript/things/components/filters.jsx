@@ -9,7 +9,7 @@ import Subreddits from 'global/subreddits'
 class ThingFilters extends React.Component {
     constructor() {
         super()
-        this.state = { subreddit: null };
+        this.state = { subreddit: '' };
     }
 
     componentDidMount() {
@@ -31,16 +31,31 @@ class ThingFilters extends React.Component {
         this.setState({ subreddit: e.target.value })
     }
 
+    randomSubreddit() {
+        const randomSub = Subreddits[Math.floor(Math.random() * Subreddits.length)]
+        this.setState({ subreddit: randomSub }, () => {
+            $('#subreddit-form').submit()
+        })
+    }
+
     render() {
         return (
-            <form id="subreddit-form" className="form-inline" method="GET" action={'/things/r/' + this.state.subreddit + '/'}>
-                <div className="input-group">
-                  <input onChange={this.onChange.bind(this)} id="subreddit-filter" placeholder="Choose a subreddit" className="form-control no-border-radius" type="text" />
-                  <span className="input-group-btn">
-                    <input type="submit" className="btn btn-primary no-border-radius" value="Go!" />
-                  </span>
-                </div>
-            </form>
+            <div className="d-flex">
+                <form id="subreddit-form" className="form-inline" method="GET" action={'/things/r/' + this.state.subreddit + '/'}>
+                    <div className="input-group">
+                      <input
+                            onChange={this.onChange.bind(this)}
+                            id="subreddit-filter"
+                            placeholder="Choose a subreddit"
+                            value={this.state.subreddit}
+                            className="form-control no-border-radius" type="text" />
+                      <span className="input-group-btn">
+                        <input type="submit" className="btn btn-primary no-border-radius" value="Go!" />
+                      </span>
+                    </div>
+                </form>
+                <button type="button" onClick={this.randomSubreddit.bind(this)} className="btn btn-primary rounded-0 ml-2">I'm feeling lucky!</button>
+            </div>
         )
     }
 }
