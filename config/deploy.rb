@@ -53,6 +53,7 @@ append :linked_dirs, "log", "tmp/pids", "tmp/cache", "tmp/sockets", "public/syst
 set :keep_releases, 3
 
 after 'bundler:install', 'rbenv:vars'
+after 'bundler:install', 'puma:make_dirs'
 
 namespace :rbenv do
   task :vars do
@@ -83,8 +84,6 @@ namespace :puma do
       execute "mkdir #{shared_path}/tmp/pids -p"
     end
   end
-
-  before :start, :make_dirs
 end
 
 # ps aux | grep puma    # Get puma pid
