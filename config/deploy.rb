@@ -2,7 +2,7 @@
 lock "3.9.0"
 
 set :application, "thingsonreddit"
-set :repo_url, "git@github.com:benrudolph/thingsonreddit.git"
+set :repo_url, "https://github.com/benrudolph/thingsonreddit.git"
 
 set :rbenv_type, :user
 set :rbenv_ruby, File.read('.ruby-version').strip
