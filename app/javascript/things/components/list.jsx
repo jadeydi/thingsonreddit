@@ -22,6 +22,10 @@ class Thing extends React.Component {
 
     render() {
         const thing = this.props.thing
+        let date = 'No date'
+        if (thing.created_utc) {
+            date = moment(thing.created_utc).format('MMM Do YYYY')
+        }
         return (
             <div className="row">
                 <div className="col d-flex mt-3 mb-3 flex-column flex-md-row">
@@ -38,9 +42,11 @@ class Thing extends React.Component {
                             <i>
                                 {this.getContext()}...
                             </i>
+                            <br />
+                            <small>&#8211;&nbsp;{thing.comment.author}</small>
                         </p>
                         <small>
-                            By: {thing.comment.author}&nbsp;|&nbsp;
+                            {date}&nbsp;|&nbsp;
                             <a href={'/comments/' + thing.comment_id}>View comment</a>&nbsp;|&nbsp;
                             <a href={thing.comment.thread_id} target="_blank">View on Reddit</a>
                         </small>
@@ -94,6 +100,7 @@ class ThingList extends React.Component {
                     <div className="row">
                         <div className="col">
                             <div className="heading mt-3 mb-3 pt-3 pb-3">
+                                <span className="text-muted light"><i>The best things found in...</i></span>
                                 <h1 className="display-4">{'/r/' + this.props.subreddit}</h1>
                             </div>
                         </div>

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import $ from 'jquery/dist/jquery'
 import _ from 'underscore/underscore'
+import moment from 'moment/moment'
 
 import { connect } from 'react-redux'
 import Showdown from 'showdown/dist/showdown'
@@ -45,9 +46,7 @@ class CommentShow extends React.Component {
             const href = $a.attr('href')
             comment.things.forEach((thing) => {
                 // Sometimes there is a trailing paren on the link. This trims it
-                console.log(thing.original_link)
                 const cleanedHref = self.decodeEntities(thing.original_link.slice(0, -3))
-                console.log(cleanedHref)
                 if (href.includes(cleanedHref)) {
                     $a.attr('href', thing.amazon_link + '?tag=benrudolph-20')
                 }
@@ -62,6 +61,10 @@ class CommentShow extends React.Component {
         const thingSnippets = comment.things.map((thing, i) => {
             return <ThingSnippet key={i} thing={thing} />
         })
+        let date = 'No date'
+        if (comment.created_utc) {
+            date = moment(comment.created_utc).format('MMM Do YYYY')
+        }
         return (
             <div className="container content comment-show">
                 <div className="comment-body">
@@ -72,7 +75,10 @@ class CommentShow extends React.Component {
                         <footer className="blockquote-footer"><small className="text-muted">{comment.author}</small></footer>
                     </blockquote>
                     <br />
-                    <small><a target="_blank" href={comment.thread_id}>View on Reddit</a></small>
+                    <small>
+                        {date}&nbsp;|&nbsp;
+                        <a target="_blank" href={comment.thread_id}>View on Reddit</a>
+                    </small>
                     <hr />
                     <h4 className="lead mb-3">Recommended Things</h4>
                     {thingSnippets}
