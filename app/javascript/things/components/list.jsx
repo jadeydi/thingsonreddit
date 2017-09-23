@@ -7,6 +7,7 @@ import moment from 'moment/moment'
 
 import { connect } from 'react-redux'
 import Showdown from 'showdown/dist/showdown'
+import Utils from 'global/utils'
 
 class Thing extends React.Component {
     getLink() {
@@ -83,7 +84,8 @@ class ThingList extends React.Component {
                 <Thing thing={thing} key={i} />
             )
         })
-        const pageLinks = _.range(1, this.props.total_pages + 1).map((page) => {
+        const pagesToShow = Utils.pagesToShow(this.props.current_page, this.props.total_pages, 10)
+        const pageLinks = _.range(pagesToShow.start + 1, pagesToShow.end + 1).map((page) => {
             return <BootstrapPageLink subreddit={this.props.subreddit} currentPage={this.props.current_page} key={page} page={page} />
         })
 
