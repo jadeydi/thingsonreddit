@@ -41,10 +41,11 @@ class ThingFilters extends React.Component {
     }
 
     render() {
-        const link = Utils.subredditLink(this.state.subreddit, this.props.order_by)
+        const link = Utils.subredditLink(this.state.subreddit)
         return (
             <div className="d-flex">
                 <form id="subreddit-form" className="form-inline" method="GET" action={link}>
+                    <input type="hidden" name="order_by" value={this.props.order_by} />
                     <div className="input-group">
                       <input
                             onChange={this.onChange.bind(this)}
