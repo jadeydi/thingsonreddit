@@ -46,7 +46,9 @@ class ThingFilters extends React.Component {
         return (
             <div className="d-flex">
                 <form id="subreddit-form" className="form-inline" method="GET" action={link}>
-                    <input type="hidden" name="order_by" value={this.props.order_by} />
+                    {this.props.order_by &&
+                        <input type="hidden" name="order_by" value={this.props.order_by} />
+                    }
                     <div className="input-group">
                       <input
                             onChange={this.onChange.bind(this)}
