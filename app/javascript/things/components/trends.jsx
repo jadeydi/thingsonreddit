@@ -35,10 +35,17 @@ class ThingTrends extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col">
+                            <p>
+                                Discover trends about the things that people post to subreddits.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col">
                             <h4 className="light">
                                 Number of things posted on /r/{subreddit} over time
                             </h4>
-                            <AreaChart curve={true} ytitle="Count of things" data={"/things/r/" + subreddit + "/by_month"} />
+                            <AreaChart curve={true} ytitle="Number of things" data={"/things/r/" + subreddit + "/by_month"} />
                         </div>
                     </div>
                     <div className="row">
@@ -46,7 +53,7 @@ class ThingTrends extends React.Component {
                             <h4 className="light">
                                 Authors linking to most things on /r/{subreddit}
                             </h4>
-                            <ColumnChart xtitle="Authors" ytitle="Count of things" data={"/things/r/" + subreddit + "/by_author"} />
+                            <ColumnChart xtitle="Authors" ytitle="Number of things" data={"/things/r/" + subreddit + "/by_author"} />
                         </div>
                     </div>
                 </div>
