@@ -25,7 +25,7 @@ class ThingTrends extends React.Component {
         const subreddit = this.props.subreddit
         return (
             <div className="container">
-                <div className="content thing-trends">
+                <div className="content thing-trends pb-3">
                     <div className="row">
                         <div className="col">
                             <div className="heading mt-3 mb-3 pt-3 pb-3">
