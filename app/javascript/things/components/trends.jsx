@@ -17,7 +17,7 @@ class ThingTrends extends React.Component {
 
         Chartkick.options = {
           height: "400px",
-          colors: ['#fdbb84']
+          colors: ['#e5561c']
         }
     }
 
@@ -51,7 +51,7 @@ class ThingTrends extends React.Component {
                     <div className="row">
                         <div className="col">
                             <h4 className="light">
-                                Authors linking to most things on /r/{subreddit}
+                                Authors linking to the most things on /r/{subreddit}
                             </h4>
                             <ColumnChart xtitle="Authors" ytitle="Number of things" data={"/things/r/" + subreddit + "/by_author"} />
                         </div>
