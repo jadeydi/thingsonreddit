@@ -10,6 +10,7 @@ import Utils from 'global/utils'
 class MainHeader extends React.Component {
 
     render() {
+        const urlFn = this.props.trends ? Utils.subredditTrendsLink : Utils.subredditLink
         const favorites = this.props.favorites.map((f, i) => {
             let klass = ''
             if (i > 5) {
@@ -21,9 +22,14 @@ class MainHeader extends React.Component {
             else if (i > 2) {
                 klass += 'd-none d-sm-block'
             }
-            const link = Utils.subredditLink(f, this.props.order_by)
+            const link = urlFn(f, this.props.order_by)
             return <a className={klass} href={link} key={i}>{'/r/' + f}</a>
         })
+
+        const about = this.props.about
+        const trends = this.props.trends
+        const subreddit = this.props.subreddit
+
         return (
             <div>
                 <nav className="navbar navbar-light pb-1 pt-1 bg-faded">
@@ -32,7 +38,10 @@ class MainHeader extends React.Component {
                     </a>
                     <ul className="navbar-nav mr-auto d-flex flex-row">
                         <li className="nav-item">
-                          <a className="nav-link" href="/about">About</a>
+                          <a className={"nav-link" + (about ? ' active' : '')} href="/about">About</a>
+                        </li>
+                        <li className="nav-item">
+                          <a className={"nav-link" + (trends ? ' active' : '')} href={Utils.subredditTrendsLink(subreddit)}>Trends</a>
                         </li>
                         <li className="nav-item">
                           <a className="nav-link" data-toggle="modal" data-target="#newsletter-modal">Newsletter</a>
@@ -55,6 +64,9 @@ const mapStateToProps = (state) => {
     return {
         favorites: state.favorites,
         order_by: state.order_by,
+        trends: state.trends || false,
+        about: state.about || false,
+        subreddit: state.subreddit || Utils.randomSub(),
     }
 }
 

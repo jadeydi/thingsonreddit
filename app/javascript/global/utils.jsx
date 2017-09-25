@@ -1,3 +1,5 @@
+import Subreddits from 'global/subreddits'
+
 const Utils = {
     pagesToShow: function(selectedPage, totalPages, limit) {
         var limitHalf = Math.floor(limit / 2);
@@ -30,6 +32,12 @@ const Utils = {
 
     subredditLink: function(subreddit, orderBy = 'score', page = 1) {
         return '/things/r/' + subreddit + '?page=' + page + '&order_by=' + orderBy
+    },
+    subredditTrendsLink: function(subreddit) {
+        return '/things/r/' + subreddit + '/trends'
+    },
+    randomSub: function() {
+        return Subreddits[Math.floor(Math.random() * Subreddits.length)]
     }
 }
 

@@ -34,14 +34,15 @@ class ThingFilters extends React.Component {
     }
 
     randomSubreddit() {
-        const randomSub = Subreddits[Math.floor(Math.random() * Subreddits.length)]
+        const randomSub = Utils.randomSub()
         this.setState({ subreddit: randomSub }, () => {
             $('#subreddit-form').submit()
         })
     }
 
     render() {
-        const link = Utils.subredditLink(this.state.subreddit)
+        const urlFn = this.props.trends ? Utils.subredditTrendsLink : Utils.subredditLink
+        const link = urlFn(this.state.subreddit)
         return (
             <div className="d-flex">
                 <form id="subreddit-form" className="form-inline" method="GET" action={link}>
@@ -67,6 +68,7 @@ class ThingFilters extends React.Component {
 const mapStateToProps = (state) => {
     return {
         order_by: state.order_by,
+        trends: state.trends || false,
     }
 }
 

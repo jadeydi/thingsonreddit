@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/r/:subreddit', on: :collection, action: 'index'
     get '/r/:subreddit/trends', on: :collection, action: 'trends'
     get '/r/:subreddit/by_author', on: :collection, action: 'by_author'
-    get '/r/:subreddit/by_day', on: :collection, action: 'by_day'
+    get '/r/:subreddit/by_month', on: :collection, action: 'by_month'
   end
 
   resources :comments

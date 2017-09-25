@@ -4,12 +4,22 @@ import PropTypes from 'prop-types'
 import $ from 'jquery/dist/jquery'
 import _ from 'underscore/underscore'
 import moment from 'moment/moment'
-import { LineChart, ColumnChart } from 'react-chartkick'
+import Chartkick from 'chartkick/chartkick'
+import { AreaChart, ColumnChart } from 'react-chartkick'
 
 import { connect } from 'react-redux'
 
 
 class ThingTrends extends React.Component {
+
+    constructor() {
+        super()
+
+        Chartkick.options = {
+          height: "400px",
+          colors: ['#fdbb84']
+        }
+    }
 
     render() {
         const subreddit = this.props.subreddit
@@ -25,11 +35,17 @@ class ThingTrends extends React.Component {
                     </div>
                     <div className="row">
                         <div className="col">
-                            <LineChart  ytitle="Count of things" data={"/things/r/" + subreddit + "/by_day"} />
+                            <h4 className="light">
+                                Number of things posted on /r/{subreddit} over time
+                            </h4>
+                            <AreaChart curve={true} ytitle="Count of things" data={"/things/r/" + subreddit + "/by_month"} />
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
+                            <h4 className="light">
+                                Authors linking to most things on /r/{subreddit}
+                            </h4>
                             <ColumnChart xtitle="Authors" ytitle="Count of things" data={"/things/r/" + subreddit + "/by_author"} />
                         </div>
                     </div>

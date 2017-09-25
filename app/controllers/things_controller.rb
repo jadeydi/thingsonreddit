@@ -5,6 +5,7 @@ class ThingsController < ApplicationController
 
     subreddit = params[:subreddit] || SUBREDDITS.sample
     @subreddit = subreddit
+    @favorites = FAVORITES.sample 10
 
     render 'trends'
   end
@@ -13,15 +14,22 @@ class ThingsController < ApplicationController
     params.permit(:subreddit)
     @subreddit = params[:subreddit]
 
-    @stats = Thing.where('subreddit = ?', @subreddit).group('author').count
+    @stats = Thing.where('subreddit = ?', @subreddit)
+      .group('author')
+      .order('count_all DESC')
+      .limit(20)
+      .count
     render json: @stats.to_a
   end
 
-  def by_day
+  def by_month
     params.permit(:subreddit)
     @subreddit = params[:subreddit]
 
-    @stats = Thing.where('subreddit = ?', @subreddit).group_by_day('created_utc').count
+    @stats = Thing.where('subreddit = ?', @subreddit)
+      .group_by_month('created_utc')
+      .count
+
     render json: @stats
   end
 
