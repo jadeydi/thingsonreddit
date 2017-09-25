@@ -6,6 +6,22 @@ body {
 
 .navbar {
     background-color: white;
+
+    .nav-item {
+        padding-left: 1rem;
+        cursor: pointer;
+    }
+}
+
+.modal-dialog {
+    max-width: 600px;
+}
+.modal-content {
+    border-radius: 0px !important;
+}
+
+#mc_embed_signup input {
+    border-radius: 0px !important;
 }
 
 .light {

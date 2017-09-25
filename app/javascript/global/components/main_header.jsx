@@ -30,9 +30,12 @@ class MainHeader extends React.Component {
                     <a className="navbar-brand logo mr-3" href="/">
                         <img src={Logo} height="40" alt="ThingsOnReddit" />
                     </a>
-                    <ul className="navbar-nav mr-auto">
+                    <ul className="navbar-nav mr-auto d-flex flex-row">
                         <li className="nav-item">
                           <a className="nav-link" href="/about">About</a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link" data-toggle="modal" data-target="#newsletter-modal">Newsletter</a>
                         </li>
                     </ul>
                     <ThingFilters />
